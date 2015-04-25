@@ -172,7 +172,8 @@ am__dirstamp = $(am__leading_dot)dirstamp
 am_t_test_OBJECTS = unity/t_test-unity.$(OBJEXT) \
 	unit_test/t_test-unit_tests.$(OBJEXT) \
 	unity/t_test-unity_fixture.$(OBJEXT) \
-	unit_test/t_test-timer_test.$(OBJEXT)
+	unit_test/t_test-timer_test.$(OBJEXT) \
+	unit_test/t_test-units_test.$(OBJEXT)
 t_test_OBJECTS = $(am_t_test_OBJECTS)
 t_test_DEPENDENCIES = libiperf.la
 t_test_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -624,7 +625,7 @@ t_uuid_SOURCES = t_uuid.c
 t_uuid_CFLAGS = -g
 t_uuid_LDFLAGS = 
 t_uuid_LDADD = libiperf.la
-t_test_SOURCES = unity/unity.c unit_test/unit_tests.c unity/unity_fixture.c unit_test/timer_test.c
+t_test_SOURCES = unity/unity.c unit_test/unit_tests.c unity/unity_fixture.c unit_test/timer_test.c unit_test/units_test.c
 t_test_CFLAGS = -g -Iunit_test/ -Iunity/
 t_test_LDFLAGS = 
 t_test_LDADD = libiperf.la
@@ -805,6 +806,8 @@ unity/t_test-unity_fixture.$(OBJEXT): unity/$(am__dirstamp) \
 	unity/$(DEPDIR)/$(am__dirstamp)
 unit_test/t_test-timer_test.$(OBJEXT): unit_test/$(am__dirstamp) \
 	unit_test/$(DEPDIR)/$(am__dirstamp)
+unit_test/t_test-units_test.$(OBJEXT): unit_test/$(am__dirstamp) \
+	unit_test/$(DEPDIR)/$(am__dirstamp)
 
 t_test$(EXEEXT): $(t_test_OBJECTS) $(t_test_DEPENDENCIES) $(EXTRA_t_test_DEPENDENCIES) 
 	@rm -f t_test$(EXEEXT)
@@ -867,6 +870,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/units.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@unit_test/$(DEPDIR)/t_test-timer_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@unit_test/$(DEPDIR)/t_test-unit_tests.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@unit_test/$(DEPDIR)/t_test-units_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@unity/$(DEPDIR)/t_test-unity.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@unity/$(DEPDIR)/t_test-unity_fixture.Po@am__quote@
 
@@ -1187,6 +1191,20 @@ unit_test/t_test-timer_test.obj: unit_test/timer_test.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unit_test/timer_test.c' object='unit_test/t_test-timer_test.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_test_CFLAGS) $(CFLAGS) -c -o unit_test/t_test-timer_test.obj `if test -f 'unit_test/timer_test.c'; then $(CYGPATH_W) 'unit_test/timer_test.c'; else $(CYGPATH_W) '$(srcdir)/unit_test/timer_test.c'; fi`
+
+unit_test/t_test-units_test.o: unit_test/units_test.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_test_CFLAGS) $(CFLAGS) -MT unit_test/t_test-units_test.o -MD -MP -MF unit_test/$(DEPDIR)/t_test-units_test.Tpo -c -o unit_test/t_test-units_test.o `test -f 'unit_test/units_test.c' || echo '$(srcdir)/'`unit_test/units_test.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unit_test/$(DEPDIR)/t_test-units_test.Tpo unit_test/$(DEPDIR)/t_test-units_test.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unit_test/units_test.c' object='unit_test/t_test-units_test.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_test_CFLAGS) $(CFLAGS) -c -o unit_test/t_test-units_test.o `test -f 'unit_test/units_test.c' || echo '$(srcdir)/'`unit_test/units_test.c
+
+unit_test/t_test-units_test.obj: unit_test/units_test.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_test_CFLAGS) $(CFLAGS) -MT unit_test/t_test-units_test.obj -MD -MP -MF unit_test/$(DEPDIR)/t_test-units_test.Tpo -c -o unit_test/t_test-units_test.obj `if test -f 'unit_test/units_test.c'; then $(CYGPATH_W) 'unit_test/units_test.c'; else $(CYGPATH_W) '$(srcdir)/unit_test/units_test.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) unit_test/$(DEPDIR)/t_test-units_test.Tpo unit_test/$(DEPDIR)/t_test-units_test.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='unit_test/units_test.c' object='unit_test/t_test-units_test.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_test_CFLAGS) $(CFLAGS) -c -o unit_test/t_test-units_test.obj `if test -f 'unit_test/units_test.c'; then $(CYGPATH_W) 'unit_test/units_test.c'; else $(CYGPATH_W) '$(srcdir)/unit_test/units_test.c'; fi`
 
 t_timer-t_timer.o: t_timer.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(t_timer_CFLAGS) $(CFLAGS) -MT t_timer-t_timer.o -MD -MP -MF $(DEPDIR)/t_timer-t_timer.Tpo -c -o t_timer-t_timer.o `test -f 't_timer.c' || echo '$(srcdir)/'`t_timer.c

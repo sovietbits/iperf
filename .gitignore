@@ -5,6 +5,7 @@
 *.o
 *.orig
 *.Po
+*.dirstamp
 /Makefile
 /autom4te.cache
 /config.log

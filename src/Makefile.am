@@ -68,7 +68,7 @@ t_uuid_CFLAGS           = -g
 t_uuid_LDFLAGS          =
 t_uuid_LDADD            = libiperf.la
 
-t_test_SOURCES          = unity/unity.c unit_test/unit_tests.c unity/unity_fixture.c unit_test/timer_test.c
+t_test_SOURCES          = unity/unity.c unit_test/unit_tests.c unity/unity_fixture.c unit_test/timer_test.c unit_test/units_test.c
 t_test_CFLAGS           = -g -Iunit_test/ -Iunity/
 t_test_LDFLAGS          = 
 t_test_LDADD            = libiperf.la
