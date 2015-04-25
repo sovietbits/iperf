@@ -1,6 +1,6 @@
 lib_LTLIBRARIES         = libiperf.la                                   # Build and install an iperf library
 bin_PROGRAMS            = iperf3                                        # Build and install an iperf binary
-noinst_PROGRAMS         = t_timer t_units t_uuid iperf3_profile         # Build, but don't install the test programs and a profiled version of iperf3
+noinst_PROGRAMS         = t_timer t_units t_uuid t_test iperf3_profile         # Build, but don't install the test programs and a profiled version of iperf3
 include_HEADERS         = iperf_api.h # Defines the headers that get installed with the program
 
 
@@ -68,13 +68,18 @@ t_uuid_CFLAGS           = -g
 t_uuid_LDFLAGS          =
 t_uuid_LDADD            = libiperf.la
 
-
+t_test_SOURCES          = unity/unity.c unit_test/unit_tests.c unity/unity_fixture.c unit_test/timer_test.c
+t_test_CFLAGS           = -g -Iunit_test/ -Iunity/
+t_test_LDFLAGS          = 
+t_test_LDADD            = libiperf.la
 
 
 # Specify which tests to run during a "make check"
 TESTS                   = \
                         t_timer \
                         t_units \
-                        t_uuid
-
+                        t_uuid \
+			t_test
+run_tests: t_test
+	./t_test
 dist_man_MANS          = iperf3.1 libiperf.3

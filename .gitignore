@@ -24,6 +24,9 @@ src/iperf3_profile
 src/t_timer
 src/t_units
 src/t_uuid
+src/t_test
+src/unity/.deps
+src/unit_test/.deps
 examples/.libs
 examples/Makefile
 examples/mic
