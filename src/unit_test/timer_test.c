@@ -7,6 +7,7 @@
 #include "unity_fixture.h"
 static Timer *tp;
 static int flag;
+static struct timeval start_time;
 static void
 timer_proc( TimerClientData client_data, struct timeval* nowP )
 {
@@ -20,7 +21,8 @@ TEST_GROUP_RUNNER(timer)
 }
 TEST_SETUP(timer)
 {
-    tp = tmr_create((struct timeval*) 0, timer_proc, JunkClientData, 3000000, 0);
+    gettimeofday(&start_time, NULL);	
+    tp = tmr_create(&start_time, timer_proc, JunkClientData, 3000000, 0);
     flag=0;
 }
 TEST_TEAR_DOWN(timer)
@@ -33,12 +35,15 @@ TEST(timer, test_creation)
 }
 TEST(timer, test_run)
 {
-	
-    tmr_run((struct timeval*) 0);
-    sleep(2);
+    tmr_run(&start_time);
     TEST_ASSERT_EQUAL(0,flag);
-    sleep(1);
-    tmr_run((struct timeval*) 0);
+
+    start_time.tv_sec +=2;
+    tmr_run(&start_time);
+    TEST_ASSERT_EQUAL(0,flag);
+
+    start_time.tv_sec +=1;
+    tmr_run(&start_time);
     TEST_ASSERT_EQUAL(1,flag);
 }
 

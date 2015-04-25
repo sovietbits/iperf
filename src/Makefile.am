@@ -81,5 +81,5 @@ TESTS                   = \
                         t_uuid \
 			t_test
 run_tests: t_test
-	./t_test
+	./t_test -v
 dist_man_MANS          = iperf3.1 libiperf.3
